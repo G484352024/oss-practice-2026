@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--
+  生成AIが使えないときのためのサンプルです．
+  1. chap06/index.html にコピーして使います（このファイル自体は書きかえないでください）
+  2. （ ）の部分を，自分の PROFILE.md の内容に書きかえます
+  3. デザインBを作るときは，下の「色の設定」の色だけを変えてみましょう
+-->
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>（ニックネーム）のポートフォリオ</title>
+  <style>
+    /* ===== 色の設定：ここを変えるだけで，サイト全体の色が変わります ===== */
+    :root {
+      --main-color: #2e7d32;  /* メインの色（見出し・線・ヘッダー） */
+      --bg-color: #f5f8f5;    /* ページの背景の色 */
+      --card-color: #ffffff;  /* カード（各セクション）の背景の色 */
+      --text-color: #222222;  /* 文字の色 */
+    }
+
+    /* ページ全体 */
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      line-height: 1.8;
+      color: var(--text-color);
+      background: var(--bg-color);
+    }
+
+    /* いちばん上：名前とキャッチコピー */
+    header {
+      padding: 64px 24px 48px;
+      text-align: center;
+      color: #ffffff;
+      background: var(--main-color);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    header p {
+      margin: 8px 0 0;
+    }
+
+    /* 本文：横幅を読みやすい長さにそろえる */
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+
+    /* 各セクションを「カード」のように見せる */
+    section {
+      margin-bottom: 24px;
+      padding: 20px 24px;
+      background: var(--card-color);
+      border-left: 6px solid var(--main-color);
+      border-radius: 8px;
+    }
+    section h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      color: var(--main-color);
+    }
+
+    /* いちばん下 */
+    footer {
+      padding: 24px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- 名前とキャッチコピー -->
+  <header>
+    <h1>（ニックネーム）</h1>
+    <p>（ひとことキャッチコピー）</p>
+  </header>
+
+  <main>
+    <!-- 基本情報 -->
+    <section>
+      <h2>基本情報</h2>
+      <ul>
+        <li>学年：（学年）</li>
+        <li>所属：（所属）</li>
+      </ul>
+    </section>
+
+    <!-- 趣味・好きなこと（行を増やすときは <li>〜</li> をコピーする） -->
+    <section>
+      <h2>趣味・好きなこと</h2>
+      <ul>
+        <li>（趣味1）</li>
+        <li>（趣味2）</li>
+      </ul>
+    </section>
+
+    <!-- プログラミング経験 -->
+    <section>
+      <h2>プログラミング経験</h2>
+      <ul>
+        <li>（使ったことのある言語・ツールなど）</li>
+      </ul>
+    </section>
+
+    <!-- この授業で学びたいこと -->
+    <section>
+      <h2>この授業で学びたいこと</h2>
+      <p>（学びたいこと）</p>
+    </section>
+
+    <!-- ひとこと -->
+    <section>
+      <h2>ひとこと</h2>
+      <p>（ひとこと）</p>
+    </section>
+  </main>
+
+  <!-- いちばん下 -->
+  <footer>
+    <p>&copy; 2026 （ニックネーム）</p>
+  </footer>
+</body>
+</html>
