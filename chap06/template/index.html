@@ -1,127 +1,417 @@
 <!DOCTYPE html>
-<!--
-  生成AIが使えないときのためのサンプルです．
-  1. chap06/index.html にコピーして使います（このファイル自体は書きかえないでください）
-  2. （ ）の部分を，自分の PROFILE.md の内容に書きかえます
-  3. デザインBを作るときは，下の「色の設定」の色だけを変えてみましょう
--->
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>（ニックネーム）のポートフォリオ</title>
-  <style>
-    /* ===== 色の設定：ここを変えるだけで，サイト全体の色が変わります ===== */
-    :root {
-      --main-color: #2e7d32;  /* メインの色（見出し・線・ヘッダー） */
-      --bg-color: #f5f8f5;    /* ページの背景の色 */
-      --card-color: #ffffff;  /* カード（各セクション）の背景の色 */
-      --text-color: #222222;  /* 文字の色 */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>す | My Portfolio</title>
 
-    /* ページ全体 */
-    body {
-      margin: 0;
-      font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
-      line-height: 1.8;
-      color: var(--text-color);
-      background: var(--bg-color);
-    }
+    <style>
+        /* ページ全体の基本設定 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    /* いちばん上：名前とキャッチコピー */
-    header {
-      padding: 64px 24px 48px;
-      text-align: center;
-      color: #ffffff;
-      background: var(--main-color);
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    header p {
-      margin: 8px 0 0;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    /* 本文：横幅を読みやすい長さにそろえる */
-    main {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 32px 16px;
-    }
+        body {
+            font-family: "Helvetica Neue", "Yu Gothic", "Meiryo", sans-serif;
+            background-color: #fcfaf8;
+            color: #625750;
+            line-height: 1.8;
+        }
 
-    /* 各セクションを「カード」のように見せる */
-    section {
-      margin-bottom: 24px;
-      padding: 20px 24px;
-      background: var(--card-color);
-      border-left: 6px solid var(--main-color);
-      border-radius: 8px;
-    }
-    section h2 {
-      margin-top: 0;
-      font-size: 1.2rem;
-      color: var(--main-color);
-    }
+        /* ヘッダー部分 */
+        header {
+            background-color: #fff;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f0e7e2;
+        }
 
-    /* いちばん下 */
-    footer {
-      padding: 24px;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-  </style>
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #c58f91;
+            letter-spacing: 2px;
+        }
+
+        /* ナビゲーションメニュー */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #766961;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #cf999d;
+        }
+
+        /* メインビジュアル */
+        .hero {
+            min-height: 420px;
+            background: linear-gradient(135deg, #f8e9e7, #f5eee5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 13px;
+            letter-spacing: 4px;
+            color: #a88983;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 7vw, 58px);
+            color: #987675;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #8b7770;
+        }
+
+        .hero-decoration {
+            width: 50px;
+            height: 2px;
+            background-color: #d6a5a3;
+            margin: 25px auto 0;
+        }
+
+        /* 各セクション共通の設定 */
+        section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 75px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 27px;
+            font-weight: normal;
+            color: #a77e7d;
+            letter-spacing: 3px;
+        }
+
+        .section-title span {
+            font-size: 11px;
+            color: #bda69a;
+            letter-spacing: 3px;
+        }
+
+        /* 基本情報のカード */
+        .profile-card {
+            background-color: #fff;
+            border: 1px solid #f0e7e2;
+            border-radius: 12px;
+            padding: 35px;
+            max-width: 650px;
+            margin: 0 auto;
+            box-shadow: 0 5px 20px rgba(160, 130, 120, 0.05);
+        }
+
+        .profile-item {
+            display: flex;
+            padding: 14px 5px;
+            border-bottom: 1px solid #f3eeea;
+        }
+
+        .profile-item:last-child {
+            border-bottom: none;
+        }
+
+        .profile-label {
+            width: 120px;
+            flex-shrink: 0;
+            color: #bd9290;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .profile-value {
+            font-size: 15px;
+        }
+
+        /* 趣味・好きなこと */
+        #hobby {
+            background-color: #f8f2ed;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .hobby-content {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 35px 20px;
+        }
+
+        .tea-symbol {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hobby-content h3 {
+            color: #a77e7d;
+            font-size: 22px;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .hobby-content p {
+            font-size: 14px;
+            color: #8c7b72;
+        }
+
+        /* プログラミング経験 */
+        .skill-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .skill-item {
+            background-color: #fff;
+            border: 1px solid #eadbd6;
+            border-radius: 10px;
+            width: 200px;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        .skill-item h3 {
+            color: #b17f80;
+            font-size: 20px;
+            font-weight: normal;
+            margin-bottom: 5px;
+        }
+
+        .skill-item p {
+            color: #96847b;
+            font-size: 13px;
+        }
+
+        /* 授業で学びたいこと */
+        .learning-box {
+            background-color: #f7ecea;
+            border-radius: 12px;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        .learning-box p {
+            font-size: 18px;
+            color: #997775;
+        }
+
+        /* ひとことメッセージ */
+        .message {
+            text-align: center;
+            padding: 55px 20px;
+            background-color: #f8eee9;
+        }
+
+        .message p {
+            color: #987b75;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        /* フッター */
+        footer {
+            background-color: #fff;
+            text-align: center;
+            padding: 20px;
+            color: #ad9990;
+            font-size: 12px;
+            border-top: 1px solid #f0e7e2;
+        }
+
+        /* スマートフォン向けのレイアウト調整 */
+        @media screen and (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px;
+            }
+
+            nav ul {
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero {
+                min-height: 350px;
+            }
+
+            .hero h1 {
+                letter-spacing: 5px;
+            }
+
+            section {
+                padding: 55px 18px;
+            }
+
+            .profile-card {
+                padding: 20px;
+            }
+
+            .profile-item {
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .profile-label {
+                width: auto;
+            }
+
+            .skill-item {
+                width: 100%;
+            }
+
+            .section-title h2 {
+                font-size: 23px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <!-- 名前とキャッチコピー -->
-  <header>
-    <h1>（ニックネーム）</h1>
-    <p>（ひとことキャッチコピー）</p>
-  </header>
 
-  <main>
-    <!-- 基本情報 -->
-    <section>
-      <h2>基本情報</h2>
-      <ul>
-        <li>学年：（学年）</li>
-        <li>所属：（所属）</li>
-      </ul>
-    </section>
+    <!-- ヘッダー：サイト名と各セクションへのリンク -->
+    <header>
+        <div class="logo">My Portfolio</div>
 
-    <!-- 趣味・好きなこと（行を増やすときは <li>〜</li> をコピーする） -->
-    <section>
-      <h2>趣味・好きなこと</h2>
-      <ul>
-        <li>（趣味1）</li>
-        <li>（趣味2）</li>
-      </ul>
-    </section>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#hobby">Hobby</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#learning">Learning</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- プログラミング経験 -->
-    <section>
-      <h2>プログラミング経験</h2>
-      <ul>
-        <li>（使ったことのある言語・ツールなど）</li>
-      </ul>
-    </section>
+    <!-- メインビジュアル：名前とキャッチコピー -->
+    <main>
+        <div class="hero">
+            <p class="hero-subtitle">WELCOME TO MY PORTFOLIO</p>
+            <h1>す</h1>
+            <p>睡眠過多</p>
+            <div class="hero-decoration"></div>
+        </div>
 
-    <!-- この授業で学びたいこと -->
-    <section>
-      <h2>この授業で学びたいこと</h2>
-      <p>（学びたいこと）</p>
-    </section>
+        <!-- About：基本プロフィール -->
+        <section id="about">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <span>基本情報</span>
+            </div>
 
-    <!-- ひとこと -->
-    <section>
-      <h2>ひとこと</h2>
-      <p>（ひとこと）</p>
-    </section>
-  </main>
+            <div class="profile-card">
+                <div class="profile-item">
+                    <span class="profile-label">名前</span>
+                    <span class="profile-value">す</span>
+                </div>
 
-  <!-- いちばん下 -->
-  <footer>
-    <p>&copy; 2026 （ニックネーム）</p>
-  </footer>
+                <div class="profile-item">
+                    <span class="profile-label">学年</span>
+                    <span class="profile-value">3年</span>
+                </div>
+
+                <div class="profile-item">
+                    <span class="profile-label">所属</span>
+                    <span class="profile-value">工学部</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hobby：趣味・好きなこと -->
+        <section id="hobby">
+            <div class="section-title">
+                <h2>My Hobby</h2>
+                <span>趣味・好きなこと</span>
+            </div>
+
+            <div class="hobby-content">
+                <div class="tea-symbol">♨</div>
+                <h3>紅茶</h3>
+                <p>好きなことは紅茶を楽しむことです。</p>
+            </div>
+        </section>
+
+        <!-- Skills：経験のあるプログラミング言語 -->
+        <section id="skills">
+            <div class="section-title">
+                <h2>Programming</h2>
+                <span>プログラミング経験</span>
+            </div>
+
+            <div class="skill-list">
+                <div class="skill-item">
+                    <h3>Java</h3>
+                    <p>Programming Language</p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>JavaScript</h3>
+                    <p>Programming Language</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning：この授業で学びたいこと -->
+        <section id="learning">
+            <div class="section-title">
+                <h2>Learning</h2>
+                <span>この授業で学びたいこと</span>
+            </div>
+
+            <div class="learning-box">
+                <p>Webサイト制作について学びたいです。</p>
+            </div>
+        </section>
+
+        <!-- 最後のメッセージ -->
+        <div class="message">
+            <p>よろしくお願いします。</p>
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer>
+        <p>&copy; 2026 My Portfolio - す</p>
+    </footer>
+
 </body>
 </html>
